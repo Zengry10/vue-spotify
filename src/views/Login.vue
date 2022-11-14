@@ -12,5 +12,5 @@
 </script>
 
 <template>
-    <p>s</p>
+    <p class="">s</p>
 </template>

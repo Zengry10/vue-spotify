@@ -1,7 +1,10 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL : 'https://api.spotify.com/v1/'
+    baseURL : 'https://api.spotify.com/v1/',
+    headers : { 
+        'Content-Type': 'application/json',
+    }
 });
 
 instance.interceptors.request.use(
@@ -10,7 +13,9 @@ instance.interceptors.request.use(
 
         config.headers = {
             ...config.headers,
+
             Authorization : `Bearer ${token}`,
+            
         }
 
         return config

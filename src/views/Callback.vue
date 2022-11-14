@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router'
-import HomeView from './HomeView.vue';
+import Search from './Search.vue';
 
 const router = useRouter();
 const route = useRoute();
