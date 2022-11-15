@@ -11,10 +11,12 @@ export default {
         {id: 'search', name: 'Search', fa: 'search'},
         {id: 'library', name: 'Your Library', fa: 'bar_chart'},
       ],
+      setID: 'home',
+
       installs:[
       {id: 'home', name: 'Install', fa: 'inst'},
       ],
-      setID: 'home',
+      
       albums: [
         {name: 'drive'}, 
         {name: 'zhu'},
@@ -22,6 +24,25 @@ export default {
         {name: 'Mellow'},
         {name: 'Classic Road Trip Songs'},
         {name: 'Lana Del Ray Radio'},
+      ],
+      showDropdown : false,
+
+      recents: [
+        {src: '../public/img/album10.png', title: 'Daily Mix 2', artist: 'By Spotify'},
+        {src: '../public/img/album2.png', title: 'Daily Mix 3', artist: 'Billie Eilish'},
+        {src: '../public/img/album3.png', title: 'Billie Eilish Radio', artist: 'Cold Case Files'},
+        {src: '../public/img/album4.png', title: 'Cold Case Files', artist: 'PodcastOne'},
+        {src: '../public/img/album5.png', title: 'Life Is Good Radio', artist: 'By Spotify'},
+        {src: '../public/img/album1.png', title: 'Life Is Good Radio', artist: 'By Spotify'},
+      ],
+      customs: [
+        {src: '../public/img/album2.png', title: 'Daily Mix 2', artist: 'By Spotify'},
+        {src: '../public/img/album6.png', title: 'Daily Mix 3', artist: 'By Spotify'},
+        {src: '../public/img/album7.png', title: 'Billie Eilish Radio', artist: 'Billie Eilish'},
+        {src: '../public/img/album8.png', title: 'Cold Case Files', artist: 'PodcastOne'},
+        {src: '../public/img/album9.png', title: 'Life Is Good Radio', artist: 'By Spotify'},
+        {src: '../public/img/album10.png', title: 'Life Is Good Radio', artist: 'By Spotify'},
+
       ]
     }
   }
@@ -58,7 +79,7 @@ import { RouterLink, RouterView } from 'vue-router'
               <img src="../public/img/add.PNG" alt="" srcset="" class="h-8 w-8 mr-3"/>
               <p class="text-sm text-white font-semibold">Liked Songs</p>
             </button>
-            <div class="h-px w-fullbg-light my-3"></div>
+            <div class="h-px w-full bg-gray-800 my-3"></div>
           </div>
           <div class="mx-5">
             <div id="scroll" class="w-full h-10 overflow-y-scroll overflow-x-hidden">
@@ -79,14 +100,67 @@ import { RouterLink, RouterView } from 'vue-router'
           </div>
         </div>
 
-      <div class="w-full h-full relative">
+      <div id="scroll" class="w-full h-full relative overflow-y-scroll">
          
-      <div class="w-full sticky top-0 p-2">
+        <div class="w-full sticky top-0 py-4 px-6 flex items-center justify-between bg-black">
+          <div class="flex items-center">
+            <button class="rounded-full bg-black w-8 h-8 text-zinc-50 mr-3">
+              <fa icon="chevron-left" class="text-xl"/> 
+            </button>
+            <button class="rounded-full bg-black w-8 h-8 text-zinc-50">
+              <fa icon="chevron-right" class="text-xl"/> 
+            </button>
+          </div>
+          <div class="relative">
+            <button @click="showDropdown = true" class="bg-zinc-800 rounded-full py-1 px-2 flex items-center">
+              <img src="../public/img/head.png" alt="" srcset="" class="rounded-full h-6 w-6 mr-2">
+              <p class="text-zinc-50 font-black text-xs mr-3">Rémi Lemoust</p>
+              <fa v-if="showDropdown === false" icon="circle-chevron-down" class="text-zinc-50"/>
+              <fa v-if="showDropdown === true" icon="circle-chevron-up" class="text-zinc-50"/>  
+            </button>
+            <div v-if="showDropdown === true" class="focus:outline-none absolute bg-zinc-800 w-full rounded mt-1">
+              <button @click="showDropdown = false" class="focus:outline-none w-full text-sm py-2 text-zinc-400 hover text-zinc-500 border-b border-zinc-900 opacity-75 hover:opacity-100 border-zinc-200">Account</button>
+              <button @click="showDropdown = false" class="focus:outline-none w-full text-sm py-2 text-zinc-400 hover text-zinc-500 border-b border-zinc-900 opacity-75 hover:opacity-100">Log Out</button>
+            </div>
+          </div>
+        </div>
+        <!-- partie centrale -->
+        <div class="p-6 py-10">
+        <div class=" flex items-center justify-between">
+          <h1 class="pl-2 text-2xl font-semibold text-zinc-50 tracking wider hover:underline">Recently Played</h1>
+          <h2 class="pr-8 pt-4 text-xs text-zinc-500 uppercase tracking-wider hover:underline mb-3">See All</h2>
+        </div>  
+          <div class="w-full flex flex-wrap">    
+            <div v-for="recent in recents" class="p-2 w-48 ">
+              <div class="bg-zinc-800 w-full h-auto p-5 rounded-lg shadow-md opacity-70 hover:opacity-100 transition-all">
+                <img :src="`${ recent.src }`" alt="" srcset="" class="h-auto w-full shadow mb-2">
+                <h1 class="text-sm font-semibold text-zinc-50 tracking wide"> {{ recent.title }} </h1>
+                <h2 class="text-xs text-zinc-500 tracking-wide pb-5"> {{ recent.artist }} </h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-6 py-3">
+        <div class="pl-2">
+          <h1 class="pl-2 text-2xl font-semibold text-zinc-50 tracking wider hover:underline">Made for Stephanie</h1>
+          <h2 class="text-sm text-zinc-500 ">Get better recommendations the more you listen.</h2>
+        </div>  
+          <div class="w-full flex flex-wrap">    
+            <div v-for="custom in customs" class="p-2 w-48 ">
+              <div class="bg-zinc-800 w-full h-auto p-5 rounded-lg shadow-md opacity-70 hover:opacity-100 transition-all">
+                <img :src="`${ custom.src }`" alt="" srcset="" class="h-auto w-full shadow mb-2">
+                <h1 class="text-sm font-semibold text-zinc-50 tracking wide"> {{ custom.title }} </h1>
+                <h2 class="text-xs text-zinc-500 tracking-wide pb-5"> {{ custom.artist }} </h2>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    
+    
    
-    <div class="w-full bg-light" style="height: 12vh;"> 
+    <div class="w-full bg-gray-900" style="height: 12vh;"> 
     </div>
   </div>
 
