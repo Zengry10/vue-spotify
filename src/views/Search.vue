@@ -1,22 +1,19 @@
+
 <script setup lang="ts">
 import { search } from '../api/search'
 import { ref } from 'vue'
 
-search('PNL', 'artist', 2010-2021, 1)
-
-const artists = ref([])
-
+const artists = ref([]);
 async function init() {
- artists.value = await search('PNL', 'artist', 2010-2021, 1)
+  artists.value = await search('Flume', 'artist', 2010-2021, 1)
 }
 
 init()
 
-
 </script>
 
 <template>
-  <main>
-    <pre> {{ artists.artists.items}}</pre>
+  <main class="p-16">
+   <pre>{{ artists }}</pre>
   </main>
 </template>

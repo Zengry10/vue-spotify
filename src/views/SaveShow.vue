@@ -4,9 +4,8 @@ import { saveShow } from '../api/saveShow'
 
 const artists = ref([])
 
-async function init() {
- const res = await saveShow('3NH8t45zOTqzlZgBvZRjvB')
- artists.value = res.data
+async function init(){
+    artists.value = await saveShow('3NH8t45zOTqzlZgBvZRjvB')
 }
 
 init()
@@ -15,6 +14,7 @@ init()
 
 <template>
     <div>
-           <pre> {{ artists.artists.follower }}</pre>
+        <pre> {{ artists.followers['total'] }}</pre>
     </div>
 </template>
+

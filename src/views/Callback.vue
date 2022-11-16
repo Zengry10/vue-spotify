@@ -14,6 +14,8 @@ localStorage.setItem('spotifyToken', token)
 router.push({
     name: 'home',
 })
+
+
 </script>
 
 <template>

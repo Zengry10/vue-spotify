@@ -4,6 +4,7 @@ import Login from '../views/Login.vue'
 import Callback from '../views/Callback.vue'
 import SaveShow from '../views/SaveShow.vue'
 import Home from '../views/Home.vue'
+import Test from '../views/test.vue'
 
 
 const router = createRouter({
@@ -38,6 +39,11 @@ const router = createRouter({
       path: '/saveshow',
       name: 'saveshow',
       component: SaveShow,
+    },
+    {
+      path: '/test',
+      name: 'test',
+      component: Test,
     },
   ]
 })

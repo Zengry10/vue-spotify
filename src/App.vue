@@ -1,4 +1,5 @@
 <script lang="ts">
+
 export default {
   name: 'App',
   data: function() {
@@ -102,7 +103,7 @@ import { RouterLink, RouterView } from 'vue-router'
 
       <div id="scroll" class="w-full h-full relative overflow-y-scroll">
          
-        <div class="w-full sticky top-0 py-4 px-6 flex items-center justify-between bg-black">
+        <!-- <div class="w-full sticky top-0 py-4 px-6 flex items-center justify-between bg-black">
           <div class="flex items-center">
             <button class="rounded-full bg-black w-8 h-8 text-zinc-50 mr-3">
               <fa icon="chevron-left" class="text-xl"/> 
@@ -123,7 +124,7 @@ import { RouterLink, RouterView } from 'vue-router'
               <button @click="showDropdown = false" class="focus:outline-none w-full text-sm py-2 text-zinc-400 hover text-zinc-500 border-b border-zinc-900 opacity-75 hover:opacity-100">Log Out</button>
             </div>
           </div>
-        </div>
+        </div> -->
         <!-- partie centrale -->
         <div class="p-6 py-10">
         <div class=" flex items-center justify-between">
